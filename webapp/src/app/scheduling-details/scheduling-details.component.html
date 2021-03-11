@@ -21,7 +21,7 @@
                     <td>{{staff.StaffId}}</td>
                     <td>{{staff.Order}}</td>
                     <td>{{staff.CreatedBy}}</td>
-                    <td>{{staff.CreatedAt}}</td>
+                    <td>{{staff.CreatedAt | date : "MMMM d, y"}}</td>
                     <td>
                         <i class="far fa-trash-alt fa-lg text-danger" (click)="OnDelete(staff.StaffId)"></i>
                     </td>
