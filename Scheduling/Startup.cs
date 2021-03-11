@@ -33,7 +33,11 @@ namespace Scheduling.Api
         {
             services.AddDbContext<SCHEDULINGContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SchedulingConnectionString")));
             services.AddScoped<IStaffScheduleServices, StaffScheduleService>();
-            services.AddControllers();
+            services.AddControllers()
+                    .AddJsonOptions(options =>
+                    {
+                        options.JsonSerializerOptions.PropertyNamingPolicy = null;
+                    });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -42,9 +46,9 @@ namespace Scheduling.Api
                     Title = "Scheduling API",
                     Description = "A simple scheduling API"                   
                 });
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
+                //var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                //var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                //c.IncludeXmlComments(xmlPath);
             });
         }
 
