@@ -1,0 +1,32 @@
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center">Staff Scheduling App</h1>
+</div>
+<div class="row">
+    <div class="col-md-6">
+    <app-scheduling-details-form></app-scheduling-details-form>
+    </div>
+    <div class="col-md-6">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Staff ID</th>
+                    <th>Order</th>
+                    <th>Created By</th>
+                    <th>Created Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let staff of service.list?.data">
+                    <td>{{staff.StaffId}}</td>
+                    <td>{{staff.Order}}</td>
+                    <td>{{staff.CreatedBy}}</td>
+                    <td>{{staff.CreatedAt}}</td>
+                    <td>
+                        <i class="far fa-trash-alt fa-lg text-danger" (click)="OnDelete(staff.StaffId)"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
