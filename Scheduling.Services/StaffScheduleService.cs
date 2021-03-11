@@ -68,6 +68,15 @@ namespace Scheduling.Services
         {
             return (_context.StaffScheduleLists.Select(p => p.StaffId).DefaultIfEmpty().Max() + 1);            
         }
+        public async Task DeleteScheduleAsync(int id)
+        {
+            var scheduledStaff = _context.StaffScheduleLists.Find(id);
+            if (scheduledStaff != null)
+            {
+               _context.StaffScheduleLists.Remove(scheduledStaff);
+            }
+            await _context.SaveChangesAsync();
+        }
 
         protected virtual void Dispose(bool disposing)
         {
@@ -86,5 +95,6 @@ namespace Scheduling.Services
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+        
     }
 }

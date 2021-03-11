@@ -10,5 +10,7 @@ namespace Scheduling.Services
         Task<AddStaffScheduleResponse> AddStaffScheduleAsync(AddStaffScheduleRequest request);
 
         Task<GetStaffScheduleResponse> GetStaffScheduleAsync();
+
+        Task DeleteScheduleAsync(int id);
     }
 }

@@ -44,5 +44,12 @@ namespace Scheduling.Api.Controllers
 
             return result;
         }
+                
+        [HttpDelete]
+        [Route("DeleteSchedule/{id}")]
+        public async Task DeleteSchedule(int id)
+        {
+            await _staffScheduleService.DeleteScheduleAsync(id);
+        }
     }
 }
